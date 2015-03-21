@@ -21,7 +21,10 @@ makeCacheMatrix <- function(a,b,c,d) {
     invy=matrix(z,2)
     cache <<- y
     cachei <<- invy
-    invy
+    message("input matrix:")
+    print(y)
+    message("inverse of input matrix:")
+    print(invy)
 }
 
 ## make a 2x2 matrix "v" based on input data a, b, c,and d
@@ -32,13 +35,16 @@ makeCacheMatrix <- function(a,b,c,d) {
 cacheSolve <- function(a,b,c,d) {
     w=c(a,b,c,d)
     v=matrix(w,2)
+    message("input matrix:")
+    print(v)
     if((!is.null(cache)) && (identical(cache,v)==TRUE)) {
         message("getting cached data...")
         ## Return "cachei" (i.e., cached inverse of matrix "y")
+        message("inverse of input matrix:")
         print (cachei)
     } else {
         ## Calculating components of the matrix "invv", which is the inverse of matrix "v"
-        message("calculating inverse of input matrix")
+        message("calculating inverse of input matrix...")
         detd=1/(a*d-b*c)
         e=detd*d
         f=detd*(-b)
@@ -47,6 +53,7 @@ cacheSolve <- function(a,b,c,d) {
         z=c(e,f,g,h)
         invv=matrix(z,2)
         ## Return a matrix that is the inverse of matrix "v"
-        invv
+        message("inverse of input matrix:")
+        print(invv)
     }
 }
